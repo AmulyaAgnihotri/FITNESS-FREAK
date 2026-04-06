@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FITNESS FREAK — Best Gym in Lakhimpur Kheri | Powered by Fitline</title>
+  <meta name="description" content="Fitness Freak — Best Gym in Lakhimpur Kheri. Expert trainers, premium equipment, ₹2500/month. Powered by Fitline.">
+  <meta name="keywords" content="gym lakhimpur kheri, fitness freak, fitline, best gym lakhimpur, weight training, personal trainer lakhimpur">
+  <meta property="og:title" content="FITNESS FREAK — Best Gym in Lakhimpur Kheri">
+  <meta property="og:description" content="Fitness Freak — Best Gym in Lakhimpur Kheri. Expert trainers, premium equipment, ₹2500/month. Powered by Fitline.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fitnessfreak.in">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FITNESS FREAK — Best Gym in Lakhimpur Kheri">
+  <meta name="twitter:description" content="Expert trainers, premium equipment, ₹2500/month. Powered by Fitline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <script src="https://player.vimeo.com/api/player.js" defer></script>
+</head>
+<body>
+
+  <!-- ========== GLOBAL UI LAYERS ========== -->
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NOISE OVERLAY -->
+  <svg class="noise-overlay" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+  </svg>
+
+  <!-- BACKGROUND ORBS -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+  </div>
+
+  <!-- PAGE LOADER -->
+  <div class="loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-fitness">FITNESS</span>
+        <span class="loader-freak">FREAK<span class="loader-strike"></span><span class="loader-arrow">›››</span></span>
+      </div>
+      <div class="loader-tagline">POWERED BY FITLINE</div>
+      <div class="loader-bar">
+        <div class="loader-bar-fill" id="loaderBarFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 1: NAVBAR ========== -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="#hero" class="nav-logo" aria-label="Go to Fitness Freak home section">
+        <span class="nav-logo-text">FITNESS <span class="nav-logo-freak">FREAK<span class="logo-strike"></span><span class="logo-arrow">›››</span></span></span>
+        <span class="nav-logo-tagline">POWERED BY FITLINE</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#transformations" class="nav-link">RESULTS</a></li>
+        <li><a href="#services" class="nav-link">SERVICES</a></li>
+        <li><a href="#pricing" class="nav-link">PRICING</a></li>
+        <li><a href="#schedule" class="nav-link">SCHEDULE</a></li>
+        <li><a href="#bmi" class="nav-link">BMI</a></li>
+        <li><a href="#contact" class="nav-link">CONTACT</a></li>
+      </ul>
+      <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="nav-cta" id="navCta">JOIN NOW</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== SECTION 2: HERO ========== -->
+    <section class="hero" id="hero">
+      <canvas class="hero-particles" id="heroParticles"></canvas>
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal-item">
+          <span class="eyebrow-dot"></span>
+          <span>PREMIUM FITNESS CENTER</span>
+        </div>
+
+        <div class="hero-badges">
+          <div class="hero-badge badge-1 hero-badge-tilt-left reveal-item">
+            <span class="badge-icon">🏆</span>
+            <span>#1 Gym in Lakhimpur Kheri</span>
+          </div>
+          <div class="hero-badge badge-2 hero-badge-tilt-right reveal-item">
+            <span class="badge-icon">✅</span>
+            <span>Fitline Certified</span>
+          </div>
+          <div class="hero-badge badge-3 hero-badge-tilt-soft reveal-item">
+            <span class="badge-icon">👥</span>
+            <span>300+ Members Strong</span>
+          </div>
+        </div>
+
+        <h1 class="hero-headline" id="heroHeadline">
+          <span class="hero-line line-1" data-text="UNLOCK YOUR">UNLOCK YOUR</span>
+          <span class="hero-line line-2 red-text" data-text="FITNESS">FITNESS</span>
+          <span class="hero-line line-3 stroke-text" data-text="POTENTIAL">POTENTIAL</span>
+        </h1>
+        <div class="hero-underline" id="heroUnderline"></div>
+
+        <p class="hero-subtext reveal-item">
+          It's time to invest in yourself! Get stronger, fitter, and healthier with top-notch equipment, expert trainers, and a supportive environment.
+        </p>
+
+        <div class="hero-ctas reveal-item">
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            JOIN NOW <span class="btn-arrow">→</span>
+          </a>
+          <a href="#pricing" class="btn btn-ghost">
+            EXPLORE PLANS <span class="btn-arrow">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-bottom-bar reveal-item">
+          <span>All Fitness Levels Welcome</span>
+          <span class="hero-dot"></span>
+          <span>Expert Trainers</span>
+          <span class="hero-dot"></span>
+          <span>Flexible Schedules</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3: STATS ========== -->
+    <section class="stats" id="stats">
+      <div class="stats-glow-top"></div>
+      <div class="stats-inner">
+        <div class="stat-item" data-target="300" data-suffix="+">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Happy Members</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" data-target="5" data-suffix="+">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Expert Trainers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" data-target="12" data-suffix="+">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" data-target="4.9" data-suffix="★" data-decimal="true">
+          <span class="stat-number">0</span><span class="stat-suffix">★</span>
+          <span class="stat-label">Google Rating</span>
+        </div>
+      </div>
+      <div class="stats-glow-bottom"></div>
+    </section>
+
+    <!-- ========== SECTION 4: ABOUT ========== -->
+    <section class="about" id="about">
+      <div class="about-inner about-text-only">
+        <div class="about-content reveal-up">
+          <div class="section-label center">
+            <span class="label-dot"></span>
+            <span>ABOUT US</span>
+          </div>
+          <h2 class="section-title center blur-reveal">BEGIN YOUR FITNESS STORY WITH <br><span class="red-text">FITNESS FREAK</span></h2>
+          
+          <div class="about-manifesto">
+            <h3 class="manifesto-headline">"We are a movement built around <span class="white-text">passion</span>, <span class="white-text">discipline</span>, and <span class="white-text">results</span>."</h3>
+            <p class="about-text center-text">
+              Located in the heart of Lakhimpur Kheri, <strong>Fitness Freak powered by Fitline</strong> offers a premium, world-class fitness experience. From state-of-the-art equipment to expert guidance, our only motive is to help you crush your goals. Check out what we stand for.
+            </p>
+          </div>
+
+          <div class="about-features-row">
+            <div class="about-feature-card glass-card">
+              <div class="feature-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <div>
+                <h3>Nutrition Guidance</h3>
+                <p>Custom diet plans tailored to your goals — whether it's bulking, cutting, or maintaining.</p>
+              </div>
+            </div>
+            <div class="about-feature-card glass-card">
+              <div class="feature-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <div>
+                <h3>Goal-Focused Coaching</h3>
+                <p>Our expert trainers design programs around YOUR goals — not generic routines.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-cta">
+            <a href="#pricing" class="btn btn-primary">DISCOVER PLANS <span class="btn-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION A: TRANSFORMATIONS ========== -->
+    <section class="transformations" id="transformations">
+      <div class="transformations-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>REAL RESULTS</span>
+        </div>
+        <h2 class="section-title center blur-reveal">MEMBER <span class="red-text">TRANSFORMATIONS</span></h2>
+        
+        <!-- 5-Column Grid: Video, Photo, Photo, Photo, Video -->
+        <div class="media-rail-shell reveal-up" data-media-rail="transformations">
+          <button type="button" class="media-rail-arrow media-rail-arrow-left" data-rail-dir="prev" aria-label="Previous transformation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="media-rail-viewport">
+            <div class="transformations-grid media-rail-track">
+
+              <!-- 1. Transformation (Video Reel) -->
+              <div class="transform-card reveal-up" data-lightbox-src="images/trans-video-1.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open Ishan body transformation video">
+                <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261071?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="trans-video-1"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+                <div class="transform-overlay">
+                  <h4>ISHAN</h4>
+                  <p>Body Transformation</p>
+                </div>
+              </div>
+
+              <!-- 2. Transformation (Photo) -->
+              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-1.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation strength focus image">
+                <img src="images/trans-img-1.webp" alt="Transformation Result" loading="lazy">
+                <div class="transform-overlay">
+                  <h4>RESULTS</h4>
+                  <p>Strength Focus</p>
+                </div>
+              </div>
+
+              <!-- 3. Transformation (Photo) -->
+              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-2.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation fitness journey image">
+                <img src="images/trans-img-2.webp" alt="Transformation Result" loading="lazy">
+                <div class="transform-overlay">
+                  <h4>DEDICATION</h4>
+                  <p>Fitness Journey</p>
+                </div>
+              </div>
+
+              <!-- 4. Transformation (Photo) -->
+              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-3.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation progress image">
+                <img src="images/trans-img-3.webp" alt="Transformation Result" loading="lazy">
+                <div class="transform-overlay">
+                  <h4>PROGRESS</h4>
+                  <p>Hard Work Pays Off</p>
+                </div>
+              </div>
+
+              <!-- 5. Transformation (Video Reel) -->
+              <div class="transform-card reveal-up" data-lightbox-src="images/trans-video-2.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open Mom Life fitness motivation video">
+                <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261091?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="trans-video-2"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+                <div class="transform-overlay">
+                  <h4>MOM LIFE</h4>
+                  <p>Fitness Motivation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="media-rail-arrow media-rail-arrow-right" data-rail-dir="next" aria-label="Next transformation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="media-rail-progress" aria-hidden="true"><span class="media-rail-progress-bar"></span></div>
+        </div>
+
+        <!-- Instagram Profile Preview Card (Always Visible) -->
+        <div class="ig-card-wrapper ig-card-wrapper-spaced reveal-up">
+           <div class="ig-popup-inner">
+              <div class="ig-popup-header">
+                 <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="ig-avatar-link">
+                    <div class="ig-avatar">FF</div>
+                 </a>
+                 <div class="ig-info">
+                    <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="ig-username">fitnessfreak.lakhimpur</a>
+                    <span class="ig-fullname">Fitness Freak | Lakhimpur Kheri</span>
+                 </div>
+              </div>
+              <div class="ig-popup-stats">
+                 <div class="ig-stat"><strong>244</strong><span>posts</span></div>
+                 <div class="ig-stat"><strong>475</strong><span>followers</span></div>
+                 <div class="ig-stat"><strong>330</strong><span>following</span></div>
+              </div>
+              <div class="ig-popup-photos">
+                 <img src="images/trans-img-1.webp" alt="Post" loading="lazy">
+                 <img src="images/trans-img-2.webp" alt="Post" loading="lazy">
+                 <img src="images/trans-img-3.webp" alt="Post" loading="lazy">
+              </div>
+              <div class="ig-popup-actions">
+                 <a href="https://wa.me/916390105243?text=Hi!%20I%20saw%20your%20website!" target="_blank" rel="noopener noreferrer" class="ig-action-btn message">Message</a>
+                 <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="ig-action-btn following">Following</a>
+              </div>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multi-Media Lightbox Modal -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Media viewer">
+      <button type="button" class="lightbox-close" data-lightbox-action="close" aria-label="Close media viewer">&times;</button>
+      <div class="lightbox-content-wrapper">
+        <img id="lightbox-img" src="" alt="Enlarged media" hidden>
+        <video id="lightbox-video" src="" controls hidden></video>
+      </div>
+      <button type="button" class="lightbox-prev" data-lightbox-action="prev" aria-label="Show previous media">&#10094;</button>
+      <button type="button" class="lightbox-next" data-lightbox-action="next" aria-label="Show next media">&#10095;</button>
+    </div>
+
+    <!-- ========== SECTION B: PERSONAL TRAINING FEATURE ========== -->
+    <section class="personal-training">
+      <div class="pt-inner">
+        <div class="pt-grid">
+          <!-- Left: Trainer Profiles -->
+          <div class="pt-trainers-wrapper reveal-left">
+             <div class="pt-trainers-grid">
+                <!-- Trainer 1: Ishant -->
+                <div class="trainer-card">
+                   <div class="trainer-video">
+                      <div class="pt-badge pt-badge-inline">1-on-1 Coaching</div>
+                      <div class="vimeo-video-wrapper" style="padding:178.77% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180260989?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ishan-video"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+                   </div>
+                   <div class="trainer-ig-bar">
+                      <div class="trainer-ig-avatar">
+                         <div class="trainer-ig-avatar-fill">IS</div>
+                      </div>
+                      <div class="trainer-ig-info">
+                         <a href="https://www.instagram.com/ig_ishant_25?igsh=MWFpYXVjOTk2enNsNQ==" target="_blank" rel="noopener noreferrer" class="trainer-ig-username">ig_ishant_25</a>
+                         <span class="trainer-ig-role">Personal Trainer</span>
+                      </div>
+                      <a href="https://www.instagram.com/ig_ishant_25?igsh=MWFpYXVjOTk2enNsNQ==" target="_blank" rel="noopener noreferrer" class="trainer-ig-btn">Visit</a>
+                   </div>
+                </div>
+                
+                <!-- Trainer 2: Shoeb -->
+                <div class="trainer-card trainer-card-stagger">
+                   <div class="trainer-video">
+                      <div class="pt-badge pt-badge-inline">1-on-1 Coaching</div>
+                      <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261005?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="shoeb-video"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+                   </div>
+                   <div class="trainer-ig-bar">
+                      <div class="trainer-ig-avatar">
+                         <div class="trainer-ig-avatar-fill">SH</div>
+                      </div>
+                      <div class="trainer-ig-info">
+                         <a href="https://www.instagram.com/trainedbyshoeb75250?igsh=bWRsNno3em8wamFl" target="_blank" rel="noopener noreferrer" class="trainer-ig-username">trainedbyshoeb</a>
+                         <span class="trainer-ig-role">Personal Trainer</span>
+                      </div>
+                      <a href="https://www.instagram.com/trainedbyshoeb75250?igsh=bWRsNno3em8wamFl" target="_blank" rel="noopener noreferrer" class="trainer-ig-btn">Visit</a>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- Right: Details -->
+          <div class="pt-content reveal-right">
+            <div class="section-label">
+              <span class="label-dot"></span>
+              <span>EXPERT GUIDANCE</span>
+            </div>
+            <h2 class="section-title blur-reveal">TRANSFORM WITH <span class="red-text">PERSONAL TRAINING</span></h2>
+            <p class="pt-desc">
+              Don't know how to start your fitness journey? Our elite personal trainers build custom-tailored programs designed strictly for your goals, body type, and schedule.
+            </p>
+            <ul class="pt-benefits">
+              <li><span class="benefit-icon">🎯</span> Custom Workout Plans</li>
+              <li><span class="benefit-icon">🥗</span> Nutritional Counseling</li>
+              <li><span class="benefit-icon">📈</span> Weekly Progress Tracking</li>
+              <li><span class="benefit-icon">💪</span> Form & Technique Correction</li>
+            </ul>
+            <a href="https://wa.me/916390105243?text=I'm%20interested%20in%20Personal%20Training!" target="_blank" rel="noopener noreferrer" class="btn btn-primary pt-cta magnetic-btn">
+              ENQUIRE ON WHATSAPP <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION C: GYM TOUR 4-VIDEO GRID ========== -->
+    <section class="gym-tour-section" id="tour">
+      <div class="gym-tour-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>GYM TOUR</span>
+        </div>
+        <h2 class="section-title center blur-reveal">EXPERIENCE THE <span class="red-text">VIBE</span></h2>
+        
+        <div class="media-rail-shell reveal-up" data-media-rail="tour">
+          <button type="button" class="media-rail-arrow media-rail-arrow-left" data-rail-dir="prev" aria-label="Previous gym tour video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="media-rail-viewport">
+            <div class="gym-tour-grid media-rail-track">
+          <!-- Video 1 -->
+          <div class="tour-card reveal-up" data-lightbox-src="images/tour-video-1.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open gym tour workout video">
+             <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261016?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="tour-video-1"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+             <div class="tour-overlay">
+                <h4>WORKOUT</h4>
+             </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="tour-card reveal-up" data-lightbox-src="images/tour-video-2.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open gym tour lifestyle video">
+             <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261027?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="tour-video-2"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+             <div class="tour-overlay">
+                <h4>LIFESTYLE</h4>
+             </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="tour-card reveal-up" data-lightbox-src="images/tour-video-3.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open gym tour community video">
+             <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261041?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="tour-video-3"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+             <div class="tour-overlay">
+                <h4>COMMUNITY</h4>
+             </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="tour-card reveal-up" data-lightbox-src="images/tour-video-4.mp4" data-lightbox-type="video" role="button" tabindex="0" aria-label="Open gym tour dedication video">
+             <div class="vimeo-video-wrapper" style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1180261053?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="tour-video-4"></iframe>
+<button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+    <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+      <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+             <div class="tour-overlay">
+                <h4>DEDICATION</h4>
+             </div>
+          </div>
+            </div>
+          </div>
+          <button type="button" class="media-rail-arrow media-rail-arrow-right" data-rail-dir="next" aria-label="Next gym tour video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="media-rail-progress" aria-hidden="true"><span class="media-rail-progress-bar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MARQUEE ========== -->
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-inner">
+        <div class="marquee-text">NO EXCUSES <span class="marquee-dot">✦</span> PUSH LIMITS <span class="marquee-dot">✦</span> TRAIN INSANE <span class="marquee-dot">✦</span> BECOME A FREAK <span class="marquee-dot">✦</span></div>
+        <div class="marquee-text">NO EXCUSES <span class="marquee-dot">✦</span> PUSH LIMITS <span class="marquee-dot">✦</span> TRAIN INSANE <span class="marquee-dot">✦</span> BECOME A FREAK <span class="marquee-dot">✦</span></div>
+      </div>
+    </div>
+
+    <!-- ========== SECTION 5: SERVICES ========== -->
+    <section class="services" id="services">
+      <div class="services-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>OUR SERVICES</span>
+        </div>
+        <h2 class="section-title center blur-reveal">WHAT WE <span class="red-text">OFFER</span></h2>
+
+        <div class="services-grid">
+          <article class="service-card service-delay-0 glass-card reveal-up">
+            <div class="service-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Personal Trainer</h3>
+            <p>Get one-on-one coaching from certified fitness experts who push you beyond your limits and help you achieve results faster than ever.</p>
+            <a href="#contact" class="service-link">Learn More <span>→</span></a>
+          </article>
+
+          <article class="service-card service-delay-1 glass-card reveal-up">
+            <div class="service-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
+            </div>
+            <h3>Practice Sessions</h3>
+            <p>Structured workout sessions covering weight training, cardio, HIIT, and functional fitness — designed for all levels.</p>
+            <a href="#schedule" class="service-link">Learn More <span>→</span></a>
+          </article>
+
+          <article class="service-card service-delay-2 glass-card reveal-up">
+            <div class="service-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3>Good Management</h3>
+            <p>Clean facilities, organized schedules, well-maintained equipment, and an environment built for peak performance and comfort.</p>
+            <a href="#about" class="service-link">Learn More <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 6: PRICING ========== -->
+    <section class="pricing" id="pricing">
+      <div class="pricing-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>PRICING</span>
+        </div>
+        <h2 class="section-title center blur-reveal">MEMBERSHIP PLANS THAT FIT YOUR <span class="red-text">GOALS</span></h2>
+
+        <!-- REGULAR MEMBERSHIP PLANS -->
+        <h3 class="pricing-subtitle reveal-up">Monthly & Long-Term Plans</h3>
+        <div class="pricing-grid pricing-grid-4">
+          <!-- 1 MONTH PLAN -->
+          <div class="pricing-card glass-card reveal-up">
+            <div class="pricing-duration">1 Month</div>
+            <div class="pricing-price"><span class="price-symbol">₹</span>2,500</div>
+            <div class="pricing-period">/month</div>
+            <ul class="pricing-features">
+              <li>Full gym access</li>
+              <li>All equipment included</li>
+              <li>Locker facility</li>
+            </ul>
+            <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20join%20Fitness%20Freak%20-%201%20Month%20Plan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-block">GET STARTED</a>
+          </div>
+
+          <!-- 3 MONTHS PLAN -->
+          <div class="pricing-card glass-card reveal-up">
+            <div class="pricing-badge save-badge">SAVE 20%</div>
+            <div class="pricing-duration">3 Months</div>
+            <div class="pricing-price"><span class="price-symbol">₹</span>6,000</div>
+            <div class="pricing-period">/quarter</div>
+            <ul class="pricing-features">
+              <li>Full gym access</li>
+              <li>Diet consultation</li>
+              <li>Progress tracking</li>
+            </ul>
+            <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20join%20Fitness%20Freak%20-%203%20Month%20Plan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-block">GET STARTED</a>
+          </div>
+
+          <!-- 6 MONTHS PLAN -->
+          <div class="pricing-card glass-card reveal-up">
+            <div class="pricing-badge save-badge">SAVE 33%</div>
+            <div class="pricing-duration">6 Months</div>
+            <div class="pricing-price"><span class="price-symbol">₹</span>10,000</div>
+            <div class="pricing-period">/6 months</div>
+            <ul class="pricing-features">
+              <li>Full gym access</li>
+              <li>Personal trainer sessions</li>
+              <li>Nutrition plan</li>
+            </ul>
+            <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20join%20Fitness%20Freak%20-%206%20Month%20Plan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-block">GET STARTED</a>
+          </div>
+
+          <!-- 12 MONTHS PLAN (BEST VALUE) -->
+          <div class="pricing-card glass-card pricing-featured reveal-up">
+            <div class="pricing-ribbon">BEST VALUE</div>
+            <div class="pricing-duration">12 Months</div>
+            <div class="pricing-price"><span class="price-symbol">₹</span>15,000</div>
+            <div class="pricing-period">/year</div>
+            <ul class="pricing-features">
+              <li>Full gym access</li>
+              <li>Dedicated personal trainer</li>
+              <li>Complete nutrition plan</li>
+              <li>Priority scheduling</li>
+            </ul>
+            <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20join%20Fitness%20Freak%20-%2012%20Month%20Plan" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">GET STARTED</a>
+          </div>
+        </div>
+
+        <!-- SHORT TERM TRIAL PLANS -->
+        <h3 class="pricing-subtitle pricing-subtitle-spaced reveal-up">Short-Term & Drop-in Passes</h3>
+        <div class="trial-passes-container reveal-up">
+          
+          <!-- 1 DAY PASS -->
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20a%201-Day%20pass%20at%20Fitness%20Freak" target="_blank" rel="noopener noreferrer" class="trial-pass animated-pass">
+            <div class="pass-info">
+              <span class="pass-duration">1 DAY PASS</span>
+              <span class="pass-badge try-badge">TRY US</span>
+            </div>
+            <div class="pass-price">₹200</div>
+            <div class="pass-cta">GET →</div>
+          </a>
+
+          <!-- 1 WEEK PASS -->
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20a%201-Week%20pass%20at%20Fitness%20Freak" target="_blank" rel="noopener noreferrer" class="trial-pass animated-pass">
+            <div class="pass-info">
+              <span class="pass-duration">1 WEEK PASS</span>
+            </div>
+            <div class="pass-price">₹1,000</div>
+            <div class="pass-cta">GET →</div>
+          </a>
+
+          <!-- 15 DAYS PASS -->
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20a%2015-Day%20pass%20at%20Fitness%20Freak" target="_blank" rel="noopener noreferrer" class="trial-pass animated-pass">
+            <div class="pass-info">
+              <span class="pass-duration">15 DAYS PASS</span>
+            </div>
+            <div class="pass-price">₹1,500</div>
+            <div class="pass-cta">GET →</div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 7: SCHEDULE ========== -->
+    <section class="schedule" id="schedule">
+      <div class="schedule-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>TIMETABLE</span>
+        </div>
+        <h2 class="section-title center blur-reveal">WEEKLY CLASS <span class="red-text">SCHEDULE</span></h2>
+
+        <div class="schedule-grid" id="scheduleGrid">
+          <!-- Days injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 8: BMI CALCULATOR ========== -->
+    <section class="bmi" id="bmi">
+      <div class="bmi-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>HEALTH TOOL</span>
+        </div>
+        <h2 class="section-title center blur-reveal">KNOW YOUR <span class="red-text">FITNESS LEVEL</span></h2>
+
+        <div class="bmi-card glass-card reveal-scale">
+          <div class="bmi-toggle" id="bmiToggle">
+            <button class="bmi-toggle-btn active" data-gender="male">Male</button>
+            <button class="bmi-toggle-btn" data-gender="female">Female</button>
+            <div class="bmi-toggle-indicator" id="bmiIndicator"></div>
+          </div>
+
+          <div class="bmi-inputs">
+            <div class="bmi-input-group">
+              <label for="bmiHeight">Height (cm)</label>
+              <input type="number" id="bmiHeight" class="bmi-input" placeholder="170" min="50" max="300">
+            </div>
+            <div class="bmi-input-group">
+              <label for="bmiWeight">Weight (kg)</label>
+              <input type="number" id="bmiWeight" class="bmi-input" placeholder="70" min="10" max="500">
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block bmi-calculate" id="bmiCalculate">
+            CALCULATE BMI
+          </button>
+
+          <div class="bmi-result" id="bmiResult">
+            <div class="bmi-result-number" id="bmiNumber">0</div>
+            <div class="bmi-result-label" id="bmiLabel">—</div>
+            <div class="bmi-gradient-bar">
+              <div class="bmi-gradient-track"></div>
+              <div class="bmi-gradient-dot" id="bmiDot"></div>
+            </div>
+            <p class="bmi-motivation">Ready to transform? Join Fitness Freak today!</p>
+            <a href="#pricing" class="btn btn-primary">VIEW PLANS <span class="btn-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 9: TESTIMONIALS ========== -->
+    <section class="testimonials" id="testimonials">
+      <div class="testimonials-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>TESTIMONIALS</span>
+        </div>
+        <h2 class="section-title center blur-reveal">REAL PEOPLE. <span class="red-text">REAL RESULTS.</span></h2>
+
+        <div class="carousel-wrapper reveal-up">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Testimonial cards injected by JS -->
+          </div>
+          <button class="carousel-btn carousel-btn-left" id="carouselLeft" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn carousel-btn-right" id="carouselRight" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 10: CONTACT ========== -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>GET IN TOUCH</span>
+        </div>
+        <h2 class="section-title center blur-reveal">LET'S START YOUR <span class="red-text">FITNESS JOURNEY</span></h2>
+
+        <div class="contact-bento reveal-up">
+          
+          <!-- Bento 1: Title & Info -->
+          <div class="bento-card glass-card bento-title">
+            <h3 class="bento-headline">READY TO<br><span class="red-text">SWEAT?</span></h3>
+            <p class="bento-subtext">Join the movement. Premium equipment, expert guidance, and a community of freaks.</p>
+            <div class="bento-address">
+              📍 Fitness Freak Powered by Fitline, Red Tape Outlet,<br>412-B, Saujanya Chowk, Maharaj Nagar, Lakhimpur, Uttar Pradesh 262701
+            </div>
+          </div>
+
+          <!-- Bento 2: Map -->
+          <a href="https://www.google.com/maps/place/Fitness+Freak+Powered+by+Fitline/@27.9386309,80.7835735,17z/data=!3m1!4b1!4m6!3m5!1s0x399f35f50556d391:0xbe58ce035d182381!8m2!3d27.9386309!4d80.7861484!16s%2Fg%2F11xmg14tjt?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="bento-card glass-card bento-map" aria-label="Open Fitness Freak location in Google Maps">
+            <iframe
+              src="https://maps.google.com/maps?q=27.9386309,80.7861484&z=17&output=embed"
+              width="100%" height="100%"
+              class="map-embed-frame"
+              allowfullscreen loading="lazy"
+              title="Fitness Freak Location">
+            </iframe>
+          </a>
+
+          <!-- Bento 3: Phone -->
+          <a href="tel:6390105243" class="bento-card glass-card bento-phone">
+            <div class="bento-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="bento-text">
+              <span>Primary Line</span>
+              <strong>639 010 5243</strong>
+            </div>
+          </a>
+
+          <!-- Bento 4: Instagram -->
+          <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="bento-card glass-card bento-social bento-ig">
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <span>@fitnessfreak</span>
+          </a>
+
+          <!-- Bento 5: WhatsApp -->
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="bento-card glass-card bento-social bento-wa">
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <span>Chat Box</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== SECTION 11: FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="footer-plasma-glow"></div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">FITNESS <span class="nav-logo-freak">FREAK<span class="logo-strike"></span><span class="logo-arrow">›››</span></span></span>
+          <span class="footer-tagline">Powered by Fitline</span>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#about"><span class="link-dot"></span>About</a></li>
+          <li><a href="#services"><span class="link-dot"></span>Services</a></li>
+          <li><a href="#pricing"><span class="link-dot"></span>Pricing</a></li>
+          <li><a href="#schedule"><span class="link-dot"></span>Schedule</a></li>
+          <li><a href="#bmi"><span class="link-dot"></span>BMI</a></li>
+          <li><a href="#contact"><span class="link-dot"></span>Contact</a></li>
+        </ul>
+
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="social-icon social-instagram" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="social-icon social-whatsapp" aria-label="WhatsApp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-address">📍 Fitness Freak Powered by Fitline, Red Tape Outlet, 412-B, Saujanya Chowk, Maharaj Nagar, Lakhimpur, Uttar Pradesh 262701</p>
+        <p class="footer-copy">© 2026 Fitness Freak. All rights reserved. | Powered by Fitline</p>
+      </div>
+
+      <!-- THE MASTERPIECE CREATOR BADGE -->
+      <div class="creator-badge-wrapper reveal-up">
+        <a href="https://www.instagram.com/amulya_agnihotri/" target="_blank" rel="noopener noreferrer" class="creator-badge glass-card" aria-label="Developer Amulya Agnihotri Instagram">
+          <div class="creator-badge-content">
+            <span class="creator-text-light">DESIGNED & CRAFTED WITH <span class="made-heart">❤️</span> BY</span>
+            <strong class="creator-text-name">AMULYA AGNIHOTRI</strong>
+          </div>
+          <div class="creator-badge-ig">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="ig-gradient-icon">
+              <defs>
+                <linearGradient id="igGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#f09433"/>
+                  <stop offset="25%" stop-color="#e6683c"/>
+                  <stop offset="50%" stop-color="#dc2743"/>
+                  <stop offset="75%" stop-color="#cc2366"/>
+                  <stop offset="100%" stop-color="#bc1888"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#igGlow)" stroke-width="2"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#igGlow)" stroke-width="2"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#igGlow)" stroke-width="2"/>
+            </svg>
+          </div>
+          <!-- Glossy sweep inside badge -->
+          <div class="creator-badge-glare"></div>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========== FLOATING ACTION BUTTONS ========== -->
+  <div class="fab-container">
+    <a href="https://www.instagram.com/fitnessfreak.lakhimpur/" target="_blank" rel="noopener noreferrer" class="fab-instagram glass-card" aria-label="Follow us on Instagram">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="fab-whatsapp glass-card" aria-label="Chat on WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <!-- ========== SCRIPT INCLUDES ========== -->
+  <script src="js/cursor.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/bmi.js"></script>
+  <script src="js/carousel.js"></script>
+
+
+</body>
+
+</html>
+
