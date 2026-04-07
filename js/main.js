@@ -14,16 +14,19 @@
   const navbar = document.querySelector('.navbar');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hasReducedMotion = () => prefersReducedMotion.matches;
+  let startupSequenceStarted = false;
 
-  window.addEventListener('load', () => {
-    if (!loader || !loaderFill || !navbar) return;
+  function bootPageIntro() {
+    if (startupSequenceStarted || !loader || !loaderFill || !navbar) return;
+    startupSequenceStarted = true;
+
+    const heroUnderline = document.getElementById('heroUnderline');
 
     if (hasReducedMotion()) {
       loaderFill.style.width = '100%';
       loader.classList.add('hidden');
       navbar.classList.add('visible');
       revealHeroBadges(true);
-      const heroUnderline = document.getElementById('heroUnderline');
       if (heroUnderline) heroUnderline.classList.add('active');
       revealHeroChildren(true);
       loader.style.display = 'none';
@@ -35,34 +38,38 @@
     });
 
     setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 1800);
+      navbar.classList.add('visible');
+    }, 90);
 
     setTimeout(() => {
-      navbar.classList.add('visible');
-    }, 2000);
+      loader.classList.add('hidden');
+    }, 180);
 
     setTimeout(() => {
       revealHeroBadges();
-    }, 2200);
+    }, 240);
 
     setTimeout(() => {
       animateHeroHeadline();
-    }, 2400);
-
-    setTimeout(() => {
-      const heroUnderline = document.getElementById('heroUnderline');
-      if (heroUnderline) heroUnderline.classList.add('active');
-    }, 3000);
+    }, 320);
 
     setTimeout(() => {
       revealHeroChildren();
-    }, 2800);
+      if (heroUnderline) heroUnderline.classList.add('active');
+    }, 430);
 
     setTimeout(() => {
       loader.style.display = 'none';
-    }, 2600);
-  });
+    }, 900);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootPageIntro, { once: true });
+  } else {
+    bootPageIntro();
+  }
+
+  window.addEventListener('load', bootPageIntro, { once: true });
 
   // ---- HERO LETTER-BY-LETTER ----
   function animateHeroHeadline() {
@@ -121,7 +128,7 @@
       }
       setTimeout(() => {
         item.classList.add('revealed');
-      }, i * 200);
+      }, i * 90);
     });
   }
 

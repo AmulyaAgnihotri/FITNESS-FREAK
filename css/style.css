@@ -346,7 +346,7 @@ input:focus-visible,
 
 /* =============== HERO =============== */
 .hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:120px 24px 80px}
-.hero-particles{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-particles{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero-content{position:relative;z-index:2;text-align:center;max-width:900px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:600;font-size:.65rem;text-transform:uppercase;letter-spacing:.3em;color:var(--gray);margin-bottom:24px;padding:8px 20px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-pill);backdrop-filter:var(--blur)}
 .eyebrow-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:blink 2s ease-in-out infinite;box-shadow:0 0 8px var(--red-glow)}
@@ -364,7 +364,23 @@ input:focus-visible,
 
 .hero-headline{font-family:var(--font-hero);font-size:clamp(4.5rem,11vw,10rem);line-height:.88;color:var(--white);margin-bottom:8px;letter-spacing:.02em}
 .hero-line{display:block;overflow:hidden}
-.hero-line .letter{display:inline-block;opacity:0;transform:translateY(30px);will-change:transform,opacity}
+.hero-line.red-text {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  animation: none;
+  color: transparent;
+}
+.hero-line.red-text .letter {
+  background: linear-gradient(to right, var(--red) 20%, #ff6b6b 40%, var(--white) 50%, #ff6b6b 60%, var(--red) 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shineRed 3s linear infinite;
+  animation-delay: calc(var(--char-index) * -0.18s);
+}
+.hero-line .letter{display:inline-block;transform:translateY(30px)}
 .hero-underline{width:0;height:4px;background:var(--red);margin:8px auto 28px;border-radius:2px;transition:width .8s var(--transition);box-shadow:0 0 12px var(--red-glow)}
 .hero-underline.active{width:100px}
 .hero-subtext{font-weight:300;font-size:1.05rem;color:var(--gray);max-width:600px;margin:0 auto 40px;line-height:1.8}
@@ -3540,220 +3556,5 @@ input:focus-visible,
 
   .footer-address{
     font-size:0.64rem;
-  }
-}
-
-/* ===============================================================
-   MOBILE READABILITY TUNE-UP
-   Spacing only: no animation or behavior changes
-   =============================================================== */
-@media (max-width: 768px) {
-  .hero {
-    padding: 82px 16px 46px;
-  }
-
-  .hero-badges {
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .hero-badge {
-    padding: 8px 14px;
-  }
-
-  .hero-subtext {
-    max-width: 34ch;
-    margin-bottom: 24px;
-    line-height: 1.72;
-  }
-
-  .hero-ctas {
-    gap: 12px;
-    margin-bottom: 34px;
-  }
-
-  .hero-bottom-bar {
-    gap: 10px;
-    row-gap: 8px;
-    max-width: 32ch;
-    margin-inline: auto;
-    line-height: 1.6;
-  }
-
-  .stats {
-    padding: 36px 14px;
-  }
-
-  .stats-inner {
-    gap: 12px;
-  }
-
-  .stat-item {
-    padding: 18px 10px;
-  }
-
-  .about,
-  .services,
-  .pricing,
-  .schedule,
-  .bmi,
-  .testimonials,
-  .contact {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  .transformations,
-  .gym-tour-section,
-  .personal-training {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  .about-manifesto {
-    margin: 28px 0 24px;
-  }
-
-  .manifesto-headline {
-    margin-bottom: 24px;
-  }
-
-  .about-text {
-    max-width: 36ch;
-    line-height: 1.8;
-  }
-
-  .about-features-row,
-  .services-grid,
-  .pricing-grid,
-  .trial-passes-container,
-  .contact-bento {
-    gap: 16px;
-  }
-
-  .about-feature-card,
-  .service-card,
-  .pricing-card,
-  .trial-pass,
-  .testimonial-card,
-  .bento-card {
-    padding: 20px 16px;
-  }
-
-  .service-card p,
-  .pricing-features li,
-  .testimonial-quote,
-  .bento-subtext {
-    line-height: 1.6;
-  }
-
-  .pricing-subtitle {
-    margin: 28px 0 18px;
-  }
-
-  .pricing-price-inline {
-    margin-bottom: 16px;
-  }
-
-  .lead-inner {
-    gap: 20px;
-    padding: 28px 20px;
-  }
-
-  .lead-desc {
-    line-height: 1.7;
-  }
-
-  .schedule-accordion {
-    margin-top: 28px;
-  }
-
-  .accordion-card {
-    min-height: 96px;
-  }
-
-  .acc-content {
-    padding: 20px 18px 20px 74px;
-  }
-
-  .bmi-card {
-    padding: 28px 20px;
-    margin-top: 28px;
-  }
-
-  .bmi-inputs {
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .carousel-wrapper {
-    margin-top: 28px;
-  }
-
-  .contact-bento {
-    margin-top: 28px;
-  }
-
-  .bento-map {
-    min-height: 168px;
-  }
-
-  .footer {
-    padding: 40px 14px 30px;
-  }
-
-  .footer-links {
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-
-  .footer-socials {
-    margin-bottom: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 78px 12px 40px;
-  }
-
-  .hero-subtext {
-    max-width: 32ch;
-    margin-bottom: 22px;
-  }
-
-  .hero-bottom-bar {
-    max-width: 30ch;
-  }
-
-  .about,
-  .services,
-  .pricing,
-  .schedule,
-  .bmi,
-  .testimonials,
-  .contact,
-  .transformations,
-  .gym-tour-section,
-  .personal-training {
-    padding-top: 42px;
-    padding-bottom: 42px;
-  }
-
-  .about-feature-card,
-  .service-card,
-  .pricing-card,
-  .trial-pass,
-  .bento-card {
-    padding: 18px 14px;
-  }
-
-  .lead-inner,
-  .bmi-card {
-    padding: 24px 16px;
-  }
-
-  .bento-map {
-    min-height: 152px;
   }
 }
