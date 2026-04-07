@@ -21,7 +21,39 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/new-sections.css">
   <script src="https://player.vimeo.com/api/player.js" defer></script>
+  <!-- SEO Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Fitness Freak",
+    "image": "https://fitnessfreak.in/images/trans-img-1.webp",
+    "url": "https://fitnessfreak.in",
+    "telephone": "+91 6390105243",
+    "priceRange": "₹₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Red Tape Outlet, 412-B, Saujanya Chowk, Maharaj Nagar",
+      "addressLocality": "Lakhimpur",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "262701",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.9386309,
+      "longitude": 80.7861484
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "05:00",
+      "closes": "22:00"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -103,19 +135,19 @@
             <span>#1 Gym in Lakhimpur Kheri</span>
           </div>
           <div class="hero-badge badge-2 hero-badge-tilt-right reveal-item">
-            <span class="badge-icon">✅</span>
-            <span>Fitline Certified</span>
+            <span class="badge-icon">⭐</span>
+            <span>4.9★ Top Rated</span>
           </div>
           <div class="hero-badge badge-3 hero-badge-tilt-soft reveal-item">
-            <span class="badge-icon">👥</span>
-            <span>300+ Members Strong</span>
+            <span class="badge-icon">💪</span>
+            <span>Expert Trainers</span>
           </div>
         </div>
 
         <h1 class="hero-headline" id="heroHeadline">
-          <span class="hero-line line-1" data-text="UNLOCK YOUR">UNLOCK YOUR</span>
-          <span class="hero-line line-2 red-text" data-text="FITNESS">FITNESS</span>
-          <span class="hero-line line-3 stroke-text" data-text="POTENTIAL">POTENTIAL</span>
+          <span class="hero-line line-1" data-text="TRANSFORM">UNLOCK YOUR</span>
+          <span class="hero-line line-2 red-text" data-text="YOUR BODY">FITNESS</span>
+          <span class="hero-line line-3 stroke-text" data-text="IN 90 DAYS">POTENTIAL</span>
         </h1>
         <div class="hero-underline" id="heroUnderline"></div>
 
@@ -124,11 +156,11 @@
         </p>
 
         <div class="hero-ctas reveal-item">
-          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20know%20about%20Fitness%20Freak%20membership" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            JOIN NOW <span class="btn-arrow">→</span>
+          <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20start%20my%203-Day%20Free%20Trial!" target="_blank" rel="noopener noreferrer" class="btn btn-primary glow-cta">
+            START FREE TRIAL <span class="btn-arrow">→</span>
           </a>
-          <a href="#pricing" class="btn btn-ghost">
-            EXPLORE PLANS <span class="btn-arrow">↓</span>
+          <a href="#transformations" class="btn btn-ghost">
+            VIEW TRANSFORMATIONS <span class="btn-arrow">↓</span>
           </a>
         </div>
 
@@ -249,30 +281,51 @@
                 </div>
               </div>
 
-              <!-- 2. Transformation (Photo) -->
-              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-1.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation strength focus image">
-                <img src="images/trans-img-1.webp" alt="Transformation Result" loading="lazy">
+              <!-- 2. Transformation (Swipe Slider) -->
+              <div class="transform-card slider-card reveal-up">
+                <div class="before-after-slider">
+                  <img src="images/trans-img-1.webp" alt="After Result" class="slider-img img-after" loading="lazy">
+                  <div class="img-before-wrapper">
+                    <img src="images/trans-img-2.webp" alt="Before Result" class="slider-img img-before" loading="lazy">
+                  </div>
+                  <div class="slider-handle"></div>
+                  <input type="range" min="0" max="100" value="50" class="slider-range">
+                </div>
                 <div class="transform-overlay">
                   <h4>RESULTS</h4>
-                  <p>Strength Focus</p>
+                  <p>Rahul &middot; 90 Days &middot; -8 kg</p>
                 </div>
               </div>
 
-              <!-- 3. Transformation (Photo) -->
-              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-2.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation fitness journey image">
-                <img src="images/trans-img-2.webp" alt="Transformation Result" loading="lazy">
+              <!-- 3. Transformation (Swipe Slider) -->
+              <div class="transform-card slider-card reveal-up">
+                <div class="before-after-slider">
+                  <img src="images/trans-img-3.webp" alt="After Result" class="slider-img img-after" loading="lazy">
+                  <div class="img-before-wrapper">
+                    <img src="images/trans-img-1.webp" alt="Before Result" class="slider-img img-before" loading="lazy">
+                  </div>
+                  <div class="slider-handle"></div>
+                  <input type="range" min="0" max="100" value="50" class="slider-range">
+                </div>
                 <div class="transform-overlay">
                   <h4>DEDICATION</h4>
-                  <p>Fitness Journey</p>
+                  <p>Priya &middot; 120 Days &middot; -12 kg</p>
                 </div>
               </div>
 
-              <!-- 4. Transformation (Photo) -->
-              <div class="transform-card reveal-up" data-lightbox-src="images/trans-img-3.png" data-lightbox-type="image" role="button" tabindex="0" aria-label="Open transformation progress image">
-                <img src="images/trans-img-3.webp" alt="Transformation Result" loading="lazy">
+              <!-- 4. Transformation (Swipe Slider) -->
+              <div class="transform-card slider-card reveal-up">
+                <div class="before-after-slider">
+                  <img src="images/trans-img-2.webp" alt="After Result" class="slider-img img-after" loading="lazy">
+                  <div class="img-before-wrapper">
+                    <img src="images/trans-img-3.webp" alt="Before Result" class="slider-img img-before" loading="lazy">
+                  </div>
+                  <div class="slider-handle"></div>
+                  <input type="range" min="0" max="100" value="50" class="slider-range">
+                </div>
                 <div class="transform-overlay">
                   <h4>PROGRESS</h4>
-                  <p>Hard Work Pays Off</p>
+                  <p>Vikas &middot; 60 Days &middot; -5 kg</p>
                 </div>
               </div>
 
@@ -342,6 +395,96 @@
       <button type="button" class="lightbox-prev" data-lightbox-action="prev" aria-label="Show previous media">&#10094;</button>
       <button type="button" class="lightbox-next" data-lightbox-action="next" aria-label="Show next media">&#10095;</button>
     </div>
+
+    <!-- ========== FIRST VISIT SECTION ========== -->
+    <section class="first-visit" id="journey">
+      <div class="first-visit-inner">
+        <div class="section-label center reveal-up">
+          <span class="label-dot"></span>
+          <span>YOUR JOURNEY</span>
+        </div>
+        <h2 class="section-title center blur-reveal">HOW TO <span class="red-text">START</span></h2>
+        
+        <div class="steps-grid">
+          <div class="step-card glass-card reveal-up" style="transition-delay: 0s">
+            <div class="step-number">01</div>
+            <h3>Free Consultation</h3>
+            <p>Meet our experts to discuss your lifestyle, medical history, and specific goals.</p>
+          </div>
+          <div class="step-card glass-card reveal-up" style="transition-delay: 0.1s">
+            <div class="step-number">02</div>
+            <h3>Get Body Analysis</h3>
+            <p>Comprehensive InBody composition check to establish your fitness baseline.</p>
+          </div>
+          <div class="step-card glass-card reveal-up" style="transition-delay: 0.2s">
+            <div class="step-number">03</div>
+            <h3>Personalized Training Plan</h3>
+            <p>A custom workout and nutrition roadmap designed strictly for you.</p>
+          </div>
+          <div class="step-card glass-card reveal-up" style="transition-delay: 0.3s">
+            <div class="step-number">04</div>
+            <h3>Start Training</h3>
+            <p>Hit the gym floor with guided sessions and continuous support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GUARANTEE BANNER ========== -->
+    <section class="guarantee-banner">
+      <div class="guarantee-inner glass-card reveal-scale">
+        <h3 class="guarantee-title">OUR IRONCLAD PROMISE</h3>
+        <p class="guarantee-text">Lose <strong>5–10 KG in 90 Days</strong> or Get Free Nutrition Guidance</p>
+      </div>
+    </section>
+
+    <!-- ========== REELS SECTION (VERTICAL) ========== -->
+    <section class="reels-section" id="reels">
+      <div class="reels-container">
+        <!-- Reel 1 -->
+        <div class="reel-item">
+          <div class="reel-video-wrapper">
+            <iframe src="https://player.vimeo.com/video/1180261071?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Reel 1"></iframe>
+            <button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+              <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+                <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+                <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="reel-overlay">
+            <div class="reel-content">
+              <h4>#Motivation</h4>
+              <p>Push your limits every single day. 💪</p>
+            </div>
+            <a href="https://wa.me/916390105243?text=Hi!%20I'm%20ready%20to%20push%20my%20limits" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm pulse-btn">Join Now</a>
+          </div>
+        </div>
+        <!-- Reel 2 -->
+        <div class="reel-item">
+          <div class="reel-video-wrapper">
+             <iframe src="https://player.vimeo.com/video/1180261016?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Reel 2"></iframe>
+             <button class="mute-btn is-muted" aria-label="Toggle Sound" aria-pressed="true" data-mute-toggle="true">
+               <svg class="mute-svg" viewBox="0 0 24 24" width="24" height="24">
+                 <path class="speaker" fill="currentColor" d="M11 5L6 9H2v6h4l5 4V5z"/>
+                 <path class="wave wave-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                 <path class="wave wave-2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                 <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+               </svg>
+             </button>
+          </div>
+          <div class="reel-overlay">
+            <div class="reel-content">
+              <h4>#GymVibes</h4>
+              <p>The vibe you need to succeed. 🏋️‍♂️</p>
+            </div>
+            <a href="https://wa.me/916390105243?text=Hi!%20I%20love%20the%20gym%20vibe!" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm pulse-btn">Join Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ========== SECTION B: PERSONAL TRAINING FEATURE ========== -->
     <section class="personal-training">
@@ -584,8 +727,10 @@
           <!-- 1 MONTH PLAN -->
           <div class="pricing-card glass-card reveal-up">
             <div class="pricing-duration">1 Month</div>
-            <div class="pricing-price"><span class="price-symbol">₹</span>2,500</div>
-            <div class="pricing-period">/month</div>
+            <div class="pricing-price pricing-price-inline">
+              <span class="price-symbol">₹</span>83
+              <span class="pricing-price-suffix">/day (Billed ₹2,500/mo)</span>
+            </div>
             <ul class="pricing-features">
               <li>Full gym access</li>
               <li>All equipment included</li>
@@ -596,10 +741,12 @@
 
           <!-- 3 MONTHS PLAN -->
           <div class="pricing-card glass-card reveal-up">
-            <div class="pricing-badge save-badge">SAVE 20%</div>
+            <div class="pricing-badge save-badge">MOST POPULAR</div>
             <div class="pricing-duration">3 Months</div>
-            <div class="pricing-price"><span class="price-symbol">₹</span>6,000</div>
-            <div class="pricing-period">/quarter</div>
+            <div class="pricing-price pricing-price-inline">
+              <span class="price-symbol">₹</span>66
+              <span class="pricing-price-suffix">/day (Billed ₹6,000/qtr)</span>
+            </div>
             <ul class="pricing-features">
               <li>Full gym access</li>
               <li>Diet consultation</li>
@@ -612,8 +759,10 @@
           <div class="pricing-card glass-card reveal-up">
             <div class="pricing-badge save-badge">SAVE 33%</div>
             <div class="pricing-duration">6 Months</div>
-            <div class="pricing-price"><span class="price-symbol">₹</span>10,000</div>
-            <div class="pricing-period">/6 months</div>
+            <div class="pricing-price pricing-price-inline">
+              <span class="price-symbol">₹</span>55
+              <span class="pricing-price-suffix">/day (Billed ₹10,000)</span>
+            </div>
             <ul class="pricing-features">
               <li>Full gym access</li>
               <li>Personal trainer sessions</li>
@@ -626,8 +775,10 @@
           <div class="pricing-card glass-card pricing-featured reveal-up">
             <div class="pricing-ribbon">BEST VALUE</div>
             <div class="pricing-duration">12 Months</div>
-            <div class="pricing-price"><span class="price-symbol">₹</span>15,000</div>
-            <div class="pricing-period">/year</div>
+            <div class="pricing-price pricing-price-inline">
+              <span class="price-symbol">₹</span>41
+              <span class="pricing-price-suffix">/day (Billed ₹15,000)</span>
+            </div>
             <ul class="pricing-features">
               <li>Full gym access</li>
               <li>Dedicated personal trainer</li>
@@ -671,6 +822,25 @@
           </a>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ========== LEAD CAPTURE (FINAL CTA) ========== -->
+    <section class="lead-capture" id="leadForm">
+      <div class="lead-inner glass-card reveal-up">
+        <div class="lead-content">
+          <h2 class="lead-title">GET YOUR <span class="red-text">FREE DIET PLAN</span></h2>
+          <p class="lead-desc">Not sure where to start? Enter your details below and our expert nutritionists will send you a personalized diet plan directly on WhatsApp.</p>
+        </div>
+        <form class="lead-form" id="whatsappForm" onsubmit="event.preventDefault(); window.open('https://wa.me/916390105243?text=Hi!%20I%20would%20like%20a%20Free%20Diet%20Plan.%0A%0AName:%20' + document.getElementById('waName').value + '%0APhone:%20' + document.getElementById('waPhone').value, '_blank');">
+          <div class="form-group">
+            <input type="text" id="waName" placeholder="Your Name" required class="form-input">
+          </div>
+          <div class="form-group">
+            <input type="tel" id="waPhone" placeholder="WhatsApp Number" required class="form-input">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block glow-cta">GET MY PLAN <span class="btn-arrow">→</span></button>
+        </form>
       </div>
     </section>
 
@@ -818,6 +988,13 @@
         </div>
       </div>
     </section>
+    <!-- ========== STICKY MOBILE CTA ========== -->
+    <div class="mobile-sticky-cta">
+      <a href="https://wa.me/916390105243?text=Hi!%20I%20want%20to%20join%20Fitness%20Freak" target="_blank" rel="noopener noreferrer" class="btn btn-primary pulse-btn mobile-sticky-cta-link">
+        JOIN ON WHATSAPP
+      </a>
+    </div>
+
   </main>
 
   <!-- ========== SECTION 11: FOOTER ========== -->
@@ -850,8 +1027,14 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-address">📍 Fitness Freak Powered by Fitline, Red Tape Outlet, 412-B, Saujanya Chowk, Maharaj Nagar, Lakhimpur, Uttar Pradesh 262701</p>
-        <p class="footer-copy">© 2026 Fitness Freak. All rights reserved. | Powered by Fitline</p>
+        <p class="footer-address">
+          <span class="footer-address-line">Fitness Freak Powered by Fitline</span>
+          <span class="footer-address-line">Red Tape Outlet, 412-B, Saujanya Chowk, Maharaj Nagar, Lakhimpur, Uttar Pradesh 262701</span>
+        </p>
+        <p class="footer-copy">
+          <span class="footer-copy-line">© 2026 Fitness Freak. All rights reserved.</span>
+          <span class="footer-copy-line">Powered by Fitline</span>
+        </p>
       </div>
 
       <!-- THE MASTERPIECE CREATOR BADGE -->
@@ -901,9 +1084,9 @@
   <script src="js/main.js"></script>
   <script src="js/bmi.js"></script>
   <script src="js/carousel.js"></script>
+  <script src="js/enhancements.js"></script>
 
 
 </body>
 
 </html>
-

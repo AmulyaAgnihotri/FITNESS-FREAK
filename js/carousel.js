@@ -47,10 +47,15 @@
     const card = document.createElement('div');
     card.className = 'testimonial-card';
     card.innerHTML = `
-      <div class="testimonial-stars">${'★'.repeat(t.stars)}</div>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">${t.name.charAt(0)}</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">${t.name} <span class="verified-badge" title="Verified Member">✔ Verified</span></div>
+          <div class="testimonial-duration">${t.duration}</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">${'★'.repeat(t.stars)}<span class="testimonial-rating-num">4.9</span></div>
       <p class="testimonial-quote">"${t.quote}"</p>
-      <div class="testimonial-author">${t.name}</div>
-      <div class="testimonial-duration">${t.duration}</div>
     `;
     track.appendChild(card);
   });

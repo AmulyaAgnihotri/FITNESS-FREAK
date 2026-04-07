@@ -78,6 +78,8 @@
         const span = document.createElement('span');
         span.className = 'letter';
         span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.setProperty('--char-index', i);
+        span.style.setProperty('--char-total', chars.length);
         span.style.transitionDelay = (totalDelay + i * 50) + 'ms';
         span.style.transition = 'opacity 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1)';
         line.appendChild(span);
@@ -730,7 +732,7 @@
   }
 
   function getCardVideo(btn) {
-    const card = btn.closest('.transform-card, .tour-card, .trainer-card');
+    const card = btn.closest('.transform-card, .tour-card, .trainer-card, .reel-item');
     if (!card) return null;
     return card.querySelector('video') || card.querySelector('iframe');
   }
@@ -828,7 +830,7 @@
           document.querySelectorAll('iframe').forEach(otherIframe => {
             if (otherIframe !== media && otherIframe.src.includes('vimeo.com')) {
               new Vimeo.Player(otherIframe).setMuted(true);
-              const otherCard = otherIframe.closest('.transform-card, .tour-card, .trainer-card');
+              const otherCard = otherIframe.closest('.transform-card, .tour-card, .trainer-card, .reel-item');
               if (otherCard) {
                 const otherBtn = otherCard.querySelector('[data-mute-toggle]');
                 if (otherBtn) setMuteButtonState(otherBtn, true);
