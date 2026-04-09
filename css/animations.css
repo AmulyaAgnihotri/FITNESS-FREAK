@@ -92,11 +92,66 @@
   filter: blur(0);
 }
 
-/* ---- STAGGER CHILDREN ---- */
-.reveal-up[style*="--delay: 0"] { transition-delay: 0ms; }
-.reveal-up[style*="--delay: 1"] { transition-delay: 150ms; }
-.reveal-up[style*="--delay: 2"] { transition-delay: 300ms; }
-.reveal-up[style*="--delay: 3"] { transition-delay: 450ms; }
+/* ---- MOBILE ANIMATION OPTIMIZATION (max 768px) ---- */
+@media (max-width: 768px) {
+  /* Smooth, luxurious hero badge animations */
+  @keyframes badgeBobMobile {
+    0%, 100% { transform: rotate(var(--rotate, 0deg)) translateY(0); }
+    50% { transform: rotate(var(--rotate, 0deg)) translateY(-3px); }
+  }
+
+  .hero-badge {
+    animation: badgeBobMobile 3.2s cubic-bezier(0.4, 0.1, 0.6, 0.9) infinite !important;
+  }
+
+  /* Smooth reveal animations for mobile - luxury feel */
+  .reveal-item {
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+
+  /* Subtle orb animation for background */
+  .orb-1, .orb-2, .orb-3 {
+    animation-duration: 22s !important;
+    opacity: 0.35 !important;
+  }
+
+  /* Smooth scroll reveal for mobile */
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+
+  /* Elegant gradient text without animation on mobile */
+  .hero-line.red-text .letter {
+    animation: none !important;
+    background: linear-gradient(to right, var(--red) 20%, #ff6b6b 40%, var(--white) 50%, #ff6b6b 60%, var(--red) 80%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* Smooth underline animation */
+  .hero-underline {
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+
+  /* Disable blur effect for performance */
+  .blur-reveal {
+    filter: blur(0) !important;
+  }
+
+  .blur-reveal.revealed {
+    filter: blur(0) !important;
+  }
+
+  /* Subtle particle effect */
+  .hero-particles {
+    opacity: 0.45 !important;
+  }
+}
 
 /* ---- REVEAL ITEMS (hero children) ---- */
 .reveal-item {
