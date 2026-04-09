@@ -8,6 +8,8 @@
   const rightBtn = document.getElementById('carouselRight');
   if (!track) return;
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   // ---- TESTIMONIAL DATA ----
   const testimonials = [
     {
@@ -43,6 +45,7 @@
   ];
 
   // ---- CARD RENDERING ----
+  const cardsFragment = document.createDocumentFragment();
   testimonials.forEach(t => {
     const card = document.createElement('div');
     card.className = 'testimonial-card';
@@ -57,8 +60,9 @@
       <div class="testimonial-stars">${'★'.repeat(t.stars)}<span class="testimonial-rating-num">4.9</span></div>
       <p class="testimonial-quote">"${t.quote}"</p>
     `;
-    track.appendChild(card);
+    cardsFragment.appendChild(card);
   });
+  track.appendChild(cardsFragment);
 
   // ---- CAROUSEL STATE ----
   let currentIndex = 0;
@@ -97,10 +101,12 @@
   // ---- AUTOPLAY ----
   function startAutoplay() {
     stopAutoplay();
+    if (prefersReducedMotion.matches || document.hidden) return;
     autoplayTimer = setInterval(() => slide(1), 4000);
   }
   function stopAutoplay() {
     clearInterval(autoplayTimer);
+    autoplayTimer = null;
   }
 
   if (leftBtn) leftBtn.addEventListener('click', () => { slide(-1); startAutoplay(); });
@@ -109,6 +115,8 @@
   // ---- HOVER PAUSE ----
   track.addEventListener('mouseenter', stopAutoplay);
   track.addEventListener('mouseleave', startAutoplay);
+  track.addEventListener('focusin', stopAutoplay);
+  track.addEventListener('focusout', startAutoplay);
 
   // ---- TOUCH SWIPE SUPPORT ----
   let touchStartX = 0;
@@ -129,6 +137,15 @@
   }, { passive: true });
 
   startAutoplay();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoplay();
+      return;
+    }
+
+    startAutoplay();
+  });
 
   // ---- RESIZE RECALCULATION ----
   let resizeTimer;

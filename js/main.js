@@ -607,7 +607,7 @@
 
   // ---- BUTTON RIPPLE EFFECTS ----
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn, .nav-cta, .contact-item');
+    const btn = e.target.closest('.btn, .nav-cta');
     if (!btn || hasReducedMotion()) return;
 
     const rect = btn.getBoundingClientRect();
@@ -675,7 +675,9 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxEmbed = document.getElementById('lightbox-embed');
   const lightboxTriggers = Array.from(document.querySelectorAll('[data-lightbox-src]'));
+  const vimeoPlayerCache = new WeakMap();
   const mediaList = lightboxTriggers.map(trigger => ({
     src: trigger.dataset.lightboxSrc,
     type: trigger.dataset.lightboxType || 'image'
@@ -744,12 +746,25 @@
     return card.querySelector('video') || card.querySelector('iframe');
   }
 
+  function getVimeoPlayer(media) {
+    if (!media || media.tagName.toLowerCase() !== 'iframe' || !window.Vimeo) return null;
+
+    if (!vimeoPlayerCache.has(media)) {
+      vimeoPlayerCache.set(media, new Vimeo.Player(media));
+    }
+
+    return vimeoPlayerCache.get(media);
+  }
+
   function syncAllMuteButtons() {
     document.querySelectorAll('[data-mute-toggle]').forEach(btn => {
       const media = getCardVideo(btn);
       if (media) {
         if (media.tagName.toLowerCase() === 'iframe' && window.Vimeo) {
-          new Vimeo.Player(media).getMuted().then(muted => {
+          const player = getVimeoPlayer(media);
+          if (!player) return;
+
+          player.getMuted().then(muted => {
             setMuteButtonState(btn, muted);
           }).catch(console.error);
         } else {
@@ -761,18 +776,24 @@
 
   function updateLightboxContent() {
     const media = mediaList[currentMediaIndex];
-    if (!media || !lightboxImg || !lightboxVideo) return;
+    if (!media || !lightboxImg || !lightboxVideo || !lightboxEmbed) return;
+
+    lightboxImg.hidden = true;
+    lightboxImg.src = '';
+    lightboxVideo.hidden = true;
+    lightboxVideo.pause();
+    lightboxVideo.src = '';
+    lightboxEmbed.hidden = true;
+    lightboxEmbed.src = '';
 
     if (media.type === 'video') {
-      lightboxImg.hidden = true;
-      lightboxImg.src = '';
       lightboxVideo.hidden = false;
       lightboxVideo.src = media.src;
       lightboxVideo.play().catch(() => {});
+    } else if (media.type === 'embed') {
+      lightboxEmbed.hidden = false;
+      lightboxEmbed.src = media.src;
     } else {
-      lightboxVideo.hidden = true;
-      lightboxVideo.pause();
-      lightboxVideo.src = '';
       lightboxImg.hidden = false;
       lightboxImg.src = media.src;
     }
@@ -797,7 +818,7 @@
   }
 
   function closeLightbox() {
-    if (!lightbox || !lightboxVideo || !lightboxImg) return;
+    if (!lightbox || !lightboxVideo || !lightboxImg || !lightboxEmbed) return;
 
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
@@ -805,6 +826,8 @@
     lightboxVideo.pause();
     lightboxVideo.src = '';
     lightboxVideo.hidden = true;
+    lightboxEmbed.src = '';
+    lightboxEmbed.hidden = true;
     lightboxImg.src = '';
     lightboxImg.hidden = true;
 
@@ -828,7 +851,9 @@
     if (!media) return;
 
     if (media.tagName.toLowerCase() === 'iframe' && window.Vimeo) {
-      const player = new Vimeo.Player(media);
+      const player = getVimeoPlayer(media);
+      if (!player) return;
+
       player.getMuted().then(muted => {
         if (muted) {
           player.setMuted(false);
@@ -836,7 +861,8 @@
           
           document.querySelectorAll('iframe').forEach(otherIframe => {
             if (otherIframe !== media && otherIframe.src.includes('vimeo.com')) {
-              new Vimeo.Player(otherIframe).setMuted(true);
+              const otherPlayer = getVimeoPlayer(otherIframe);
+              if (otherPlayer) otherPlayer.setMuted(true);
               const otherCard = otherIframe.closest('.transform-card, .tour-card, .trainer-card, .reel-item');
               if (otherCard) {
                 const otherBtn = otherCard.querySelector('[data-mute-toggle]');
@@ -1033,26 +1059,59 @@
     requestAnimationFrame(raf);
   }
 
-  // --- SMART VIDEO OBSERVER (PLAY ONLY WHEN TRULY IN VIEW) ---
-  const backgroundVideos = document.querySelectorAll('video:not(#lightbox-video)');
-  const videoObserver = new IntersectionObserver((entries) => {
+  // --- SMART MEDIA OBSERVER (PLAY ONLY WHEN TRULY IN VIEW) ---
+  const backgroundMedia = document.querySelectorAll('video:not(#lightbox-video), iframe[src*="player.vimeo.com"]:not(#lightbox-embed)');
+  const mediaObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const video = entry.target;
+      const media = entry.target;
       const isVisibleEnough = entry.isIntersecting && entry.intersectionRatio >= 0.6;
 
-      if (isVisibleEnough) {
-        video.play().catch(() => {});
+      if (media.tagName.toLowerCase() === 'iframe') {
+        const player = getVimeoPlayer(media);
+        if (!player) return;
+
+        if (isVisibleEnough && !document.hidden) {
+          player.play().catch(() => {});
+        } else {
+          player.pause().catch(() => {});
+        }
+        return;
+      }
+
+      if (isVisibleEnough && !document.hidden) {
+        media.play().catch(() => {});
       } else {
-        video.pause();
+        media.pause();
       }
     });
   }, {
     threshold: [0, 0.25, 0.6, 0.85]
   });
 
-  backgroundVideos.forEach(video => {
-    video.pause();
-    videoObserver.observe(video);
+  backgroundMedia.forEach(media => {
+    if (media.tagName.toLowerCase() === 'iframe') {
+      const player = getVimeoPlayer(media);
+      if (player) {
+        player.pause().catch(() => {});
+      }
+    } else {
+      media.pause();
+    }
+
+    mediaObserver.observe(media);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) return;
+
+    backgroundMedia.forEach(media => {
+      if (media.tagName.toLowerCase() === 'iframe') {
+        const player = getVimeoPlayer(media);
+        if (player) player.pause().catch(() => {});
+      } else {
+        media.pause();
+      }
+    });
   });
 
 })();

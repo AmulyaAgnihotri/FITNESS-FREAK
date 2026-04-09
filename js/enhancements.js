@@ -1,54 +1,50 @@
 /* ===================================
-   FITNESS FREAK — Enhancements
+   FITNESS FREAK — Progressive Enhancements
+   Keeps optional UX helpers isolated so the
+   main experience stays lean and predictable.
    =================================== */
+(function() {
+  'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-  initBeforeAfterSliders();
-  initPerformanceOptimizations();
-});
+  function initBeforeAfterSliders() {
+    const sliders = document.querySelectorAll('.before-after-slider');
 
-/* --- BEFORE / AFTER SLIDERS --- */
-function initBeforeAfterSliders() {
-  const sliders = document.querySelectorAll('.before-after-slider');
-  
-  sliders.forEach(slider => {
-    const range = slider.querySelector('.slider-range');
-    const handle = slider.querySelector('.slider-handle');
-    const beforeWrapper = slider.querySelector('.img-before-wrapper');
+    sliders.forEach((slider) => {
+      const range = slider.querySelector('.slider-range');
+      const handle = slider.querySelector('.slider-handle');
+      const beforeWrapper = slider.querySelector('.img-before-wrapper');
 
-    if (!range || !handle || !beforeWrapper) return;
+      if (!range || !handle || !beforeWrapper) return;
 
-    range.addEventListener('input', (e) => {
-      const val = e.target.value;
-      beforeWrapper.style.width = `${val}%`;
-      handle.style.left = `${val}%`;
-    });
-  });
-}
+      const syncSlider = (value) => {
+        beforeWrapper.style.width = `${value}%`;
+        handle.style.left = `${value}%`;
+      };
 
-/* --- PERFORMANCE OPTIMIZATIONS --- */
-function initPerformanceOptimizations() {
-  // 1. Pause animations/particles on Tab Unfocus
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      document.body.classList.add('tab-inactive');
-    } else {
-      document.body.classList.remove('tab-inactive');
-    }
-  });
-
-  // 2. Disable heavy features on mobile/touch dynamically
-  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-  if (isTouchDevice) {
-    document.body.classList.add('is-touch-device');
-    // In animations.css / Main JS, standard cursor rules 
-    // are already overwritten by media query in new-sections.css.
-    
-    // We can also disable Tilt effects from heavy JS.
-    // If vanilla-tilt.js is running, we can destroy it (assuming it's here)
-    const tiltElements = document.querySelectorAll('.hero-badge');
-    tiltElements.forEach(el => {
-      if (el.vanillaTilt) el.vanillaTilt.destroy();
+      syncSlider(range.value);
+      range.addEventListener('input', (event) => syncSlider(event.target.value));
     });
   }
-}
+
+  function disableUnusedTouchEffects() {
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouchDevice) return;
+
+    document.querySelectorAll('.hero-badge').forEach((element) => {
+      if (element.vanillaTilt) {
+        element.vanillaTilt.destroy();
+      }
+    });
+  }
+
+  function initEnhancements() {
+    initBeforeAfterSliders();
+    disableUnusedTouchEffects();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEnhancements, { once: true });
+  } else {
+    initEnhancements();
+  }
+})();

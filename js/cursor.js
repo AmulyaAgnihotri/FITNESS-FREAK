@@ -7,6 +7,17 @@
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
 
+  const isTouchLikeDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- TOUCH / REDUCED-MOTION FALLBACK ----
+  if (isTouchLikeDevice || prefersReducedMotion) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    document.body.style.cursor = 'auto';
+    return;
+  }
+
   // ---- POINTER POSITION STATE ----
   let mouseX = 0, mouseY = 0;
   let ringX = 0, ringY = 0;
@@ -31,7 +42,7 @@
   animateRing();
 
   // ---- HOVER STATE HANDLING ----
-  const hoverTargets = 'a, button, .btn, .nav-link, .glass-card, input, .hero-badge, .service-link, .carousel-btn, .social-icon, .contact-item, .bmi-toggle-btn';
+  const hoverTargets = 'a, button, .btn, .nav-link, .glass-card, input, .hero-badge, .service-link, .carousel-btn, .social-icon, .bmi-toggle-btn';
   
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest(hoverTargets)) {
@@ -51,11 +62,4 @@
   document.addEventListener('mouseup', () => {
     setTimeout(() => document.body.classList.remove('cursor-click'), 100);
   });
-
-  // ---- TOUCH DEVICE FALLBACK ----
-  if ('ontouchstart' in window) {
-    dot.style.display = 'none';
-    ring.style.display = 'none';
-    document.body.style.cursor = 'auto';
-  }
 })();
